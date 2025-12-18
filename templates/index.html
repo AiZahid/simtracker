@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIM Tracker Terminal</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="scanlines"></div>
+    
+    <div class="terminal-container">
+      <div class="terminal-box">
+        <h1 class="terminal-title">SIM Tracker Terminal <span class="cursor">_</span></h1>
+        
+        <div class="terminal-input-group">
+          <div class="input-line">
+            <span class="prompt">&gt;</span>
+            <input
+              id="phone"
+              type="text"
+              maxlength="11"
+              placeholder="Enter CNIC or phone number"
+              class="terminal-input"
+            />
+          </div>
+          
+          <button class="terminal-btn" onclick="lookup()">
+            <span class="prompt">&gt;</span> Get Info
+          </button>
+        </div>
+
+        <div id="status" class="terminal-status"></div>
+        
+        <div id="system-message" class="system-message">
+          System waiting for input...
+        </div>
+        
+        <div id="results-container">
+          <div id="cards"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="terminal-footer">
+      <a href="https://getcrack.t.me" target="_blank" class="footer-link">
+        <div class="footer-box">
+          <p class="footer-title"><span class="prompt">&gt;</span> More Updates on Telegram</p>
+          <p class="footer-subtitle">Join our channel for real-time Updates</p>
+        </div>
+      </a>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+  </body>
+</html>
