@@ -1,0 +1,331 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: 'VT323', monospace;
+  background: #000000;
+  color: #00ff41;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* CRT Scanline Effect */
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0.3) 1px,
+    rgba(0, 0, 0, 0) 2px
+  );
+}
+
+/* Terminal Container */
+.terminal-container {
+  max-width: 800px;
+  margin: 40px auto 20px;
+  padding: 0 20px;
+}
+
+.terminal-box {
+  border: 3px solid #00ff41;
+  border-radius: 15px;
+  padding: 40px 30px;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.3),
+              inset 0 0 30px rgba(0, 255, 65, 0.05);
+  background: rgba(0, 20, 0, 0.8);
+}
+
+/* Terminal Title */
+.terminal-title {
+  font-size: 48px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px #00ff41;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Input Group */
+.terminal-input-group {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.input-line {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  border: 2px solid #00ff41;
+  border-radius: 8px;
+  padding: 5px 15px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.prompt {
+  font-size: 28px;
+  margin-right: 10px;
+  color: #00ff41;
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #00ff41;
+  font-family: 'VT323', monospace;
+  font-size: 24px;
+  padding: 10px 0;
+}
+
+.terminal-input::placeholder {
+  color: rgba(0, 255, 65, 0.5);
+}
+
+.terminal-btn {
+  background: transparent;
+  border: 2px solid #00ff41;
+  border-radius: 8px;
+  color: #00ff41;
+  font-family: 'VT323', monospace;
+  font-size: 28px;
+  padding: 15px 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.terminal-btn:hover {
+  background: rgba(0, 255, 65, 0.1);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
+}
+
+.terminal-btn:active {
+  transform: scale(0.98);
+}
+
+/* System Message */
+.system-message {
+  text-align: center;
+  font-size: 24px;
+  color: #00ff41;
+  margin-top: 20px;
+  opacity: 0.7;
+}
+
+/* Status */
+.terminal-status {
+  text-align: center;
+  font-size: 24px;
+  color: #ff4444;
+  margin: 15px 0;
+  min-height: 30px;
+}
+
+/* Results Container */
+#results-container {
+  margin-top: 30px;
+}
+
+/* Result Cards */
+.card {
+  border: 2px solid #00ff41;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: rgba(0, 20, 0, 0.6);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+}
+
+.card-header-terminal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #00ff41;
+}
+
+.card-number-terminal {
+  font-size: 32px;
+  color: #00ff41;
+}
+
+.card-title-terminal {
+  font-size: 28px;
+  color: #00ff41;
+}
+
+.field-row-terminal {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 15px;
+  padding: 10px 0;
+  font-size: 22px;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+}
+
+.field-row-terminal:last-child {
+  border-bottom: none;
+}
+
+.field-label-terminal {
+  color: rgba(0, 255, 65, 0.7);
+}
+
+.field-value-terminal {
+  color: #00ff41;
+  word-break: break-word;
+}
+
+/* Records Header */
+.records-header-terminal {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #00ff41;
+}
+
+/* Footer */
+.terminal-footer {
+  max-width: 600px;
+  margin: 40px auto 20px;
+  padding: 0 20px;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+
+.footer-box {
+  border: 2px solid #00ff41;
+  border-radius: 10px;
+  padding: 25px;
+  text-align: center;
+  background: rgba(0, 20, 0, 0.6);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+  transition: all 0.3s;
+}
+
+.footer-link:hover .footer-box {
+  background: rgba(0, 255, 65, 0.1);
+  box-shadow: 0 0 25px rgba(0, 255, 65, 0.4);
+  transform: scale(1.02);
+}
+
+.footer-title {
+  font-size: 28px;
+  color: #00ff41;
+  margin-bottom: 10px;
+}
+
+.footer-subtitle {
+  font-size: 20px;
+  color: rgba(0, 255, 65, 0.7);
+}
+
+/* Loading Animation */
+.loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .terminal-title {
+    font-size: 36px;
+  }
+
+  .terminal-input-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .terminal-btn {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 24px;
+  }
+
+  .terminal-input {
+    font-size: 20px;
+  }
+
+  .prompt {
+    font-size: 24px;
+  }
+
+  .system-message {
+    font-size: 20px;
+  }
+
+  .field-row-terminal {
+    grid-template-columns: 100px 1fr;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .terminal-box {
+    padding: 25px 20px;
+  }
+
+  .terminal-title {
+    font-size: 28px;
+  }
+
+  .terminal-input {
+    font-size: 18px;
+  }
+
+  .terminal-btn {
+    font-size: 20px;
+  }
+
+  .field-row-terminal {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .field-label-terminal::after {
+    content: ':';
+  }
+}
