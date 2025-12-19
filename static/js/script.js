@@ -114,4 +114,28 @@ document.addEventListener("DOMContentLoaded", function () {
       lookup();
     }
   });
+
+  // Auto-show WhatsApp popup on every page load
+  setTimeout(function () {
+    openWhatsAppPopup();
+  }, 1000); // 1 second delay for better UX
 });
+
+// WhatsApp Popup Functions
+function openWhatsAppPopup() {
+  const modal = document.getElementById("whatsappModal");
+  modal.style.display = "block";
+}
+
+function closeWhatsAppPopup() {
+  const modal = document.getElementById("whatsappModal");
+  modal.style.display = "none";
+}
+
+// Close modal when clicking outside of it
+window.onclick = function (event) {
+  const modal = document.getElementById("whatsappModal");
+  if (event.target === modal) {
+    closeWhatsAppPopup();
+  }
+}
