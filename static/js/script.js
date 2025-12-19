@@ -62,7 +62,6 @@ function lookup() {
         &gt; Found ${recordCount} Record${recordCount !== 1 ? "s" : ""} in Database
       </div>
     `;
-
       d.records.forEach((rec, index) => {
         cards.innerHTML += `
       <div class="card">
